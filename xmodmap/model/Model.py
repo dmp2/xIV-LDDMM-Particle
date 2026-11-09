@@ -9,7 +9,8 @@ from xmodmap.optimizer.sLBFGS import sLBFGS
 class Model:
     variables = None
     variables_to_optimize = None
-    precond = lambda *x: x  # identity function
+    precond = staticmethod(lambda x: x)  # identity function
+    precondWeights = None
     optimizer = None
     log = []
     current_step = 0
