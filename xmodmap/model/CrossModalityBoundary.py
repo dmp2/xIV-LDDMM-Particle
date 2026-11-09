@@ -10,6 +10,7 @@ class CrossModalityBoundary(Model):
     """Boundary loss for cross-modality LDDMM"""
 
     def __init__(self, hamiltonian, shooting, dataLoss, piLoss, lambLoss):
+        super().__init__()
         self.hamiltonian = hamiltonian
         self.shooting = shooting
         self.dataLoss = dataLoss
