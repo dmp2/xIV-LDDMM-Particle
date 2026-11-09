@@ -7,7 +7,13 @@
 import torch
 from torch import Tensor
 
-from torch.optim.optimizer import _to_scalar, Optimizer, ParamsT
+from torch.optim.optimizer import Optimizer, ParamsT
+
+try:
+    from torch.optim.optimizer import _to_scalar
+except ImportError:  # torch < 2.8
+    def _to_scalar(x):
+        return x.squeeze() if isinstance(x, torch.Tensor) and x.dim() != 0 else x
 
 __all__ = ['sLBFGS']
 
